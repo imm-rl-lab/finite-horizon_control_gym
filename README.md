@@ -1,2 +1,3 @@
-# finite-horizon_control_gym
+# Finite-Hhorizon Control Gym
+
 Examples of finite-horizon optimal control problems implemented as environments for reinforcement learning algorithms 
