@@ -18,7 +18,7 @@ The finite-horizon optimal control problems are implemented as environments with
 
 The following examples of finite-horizon optimal control problems are implemented:
 
-- **SimpleControlProblem (2,1)** is described by a dynamical system with simple motion. The control tends to bring the system to $x=0$ at the terminal_time from the point $x=1$;
+- **SimpleControlProblem (2,1)** is described by a dynamical system with simple motion. The control tends to bring the system to $0$ at the terminal_time from the point $1$;
 
 - **Pendulum (3,1)** is a traditional problem for testing control algorithms. The dynamic model is taken from [OpenAI Gym](https://www.gymlibrary.ml/environments/classic_control/pendulum/). The aim of the control is the stabilization of the pendulum in the top position at the terminal time;
 
