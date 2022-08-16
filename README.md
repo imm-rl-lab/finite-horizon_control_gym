@@ -85,6 +85,13 @@ $$
 \gamma = - |x(2 \pi) - 4| - |y(2 \pi)| - |\varphi(2 \pi) - 0.75 \pi| - 0.01 \int_0^{2 \pi} u^2.
 $$
 
-- **TargetProblem (7,2)** is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
-describes a hand holding a spring to which is attached a mass. It is required to control the hand such that the mass achieve the target point at the terminal time
+### TargetProblem (7,2)
+
+TargetProblem (7,2) is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
+describes a hand holding a spring to which is attached a mass:
+
+
+
+
+. It is required to control the hand such that the mass achieve the target point at the terminal time
 
