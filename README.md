@@ -14,7 +14,7 @@ The finite-horizon optimal control problems are implemented as environments with
 - <code>step(action)</code> - to get <code>next_state</code>, current <code>reward</code>, <code>done</code> (<code>True</code> if <code>t > terminal_time</code>, otherwise <code>False</code>), <code>info</code>;
 - <code>virtual_step(state, action)</code> - to get the same as from <code>step(action)</code>, but but the current <code>state</code> is also set
 
-## Examples of finite-horizon optimal control problems
+## Environments
 
 The following examples of finite-horizon optimal control problems are implemented:
 
