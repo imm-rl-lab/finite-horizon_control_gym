@@ -90,8 +90,17 @@ $$
 TargetProblem (7,2) is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
 describes a hand holding a spring to which is attached a mass:
 
+$$
+\dot{x}(t) = y(t) - x(t),\quad \ddot{y}(t) = u(t),\quad t \in [0,10],\quad x(t), y(t) \in \mathbb R^2,\quad u_1(t), u_2(t) \in [-1,1],
+$$
 
+$$
+x(0) = \dot{x}(0) = y(0) = 0. 
+$$
 
+It is required to control the hand such that the mass achieve the target point at the terminal time:
 
-. It is required to control the hand such that the mass achieve the target point at the terminal time
+$$
+\gamma = - \|x(10) - x_T\|^2 - \|y(10)\|^2 - 0.001 \int_0^{10} u^2,\quad x_T = (2,2).
+$$
 
