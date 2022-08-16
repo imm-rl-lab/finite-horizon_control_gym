@@ -22,14 +22,14 @@ class SimpleControlProblemVisualizer:
         plt.figure(figsize=[12, 12])
 
         plt.subplot(221)
-        plt.plot([state[0] for state in states], [state[1] for state in states], 'm--', label='Траектория движения')
-        plt.plot(states[-1][0],states[-1][1],'bo', label='Финальное состояние')
-        plt.xlim((0, env.terminal_time))
+        plt.plot([state[0] for state in states], [state[1] for state in states], 'm--', label='trajectory')
+        plt.plot(states[-1][0],states[-1][1],'bo', label='terminal state')
+        plt.xlim((0, env.terminal_time + 0.2))
         plt.ylim((-2, 2))
         plt.grid()
         
         plt.subplot(222)
-        plt.plot(np.arange(len(actions)) * env.dt, [action for action in actions], 'g', label='Реализация U')
+        plt.plot(np.arange(len(actions)) * env.dt, [action for action in actions], 'g', label='actions')
         plt.xlim((0, env.terminal_time))
         plt.legend()
         plt.grid()
@@ -37,6 +37,7 @@ class SimpleControlProblemVisualizer:
         plt.subplot(223)
         mean_total_rewards = np.mean(self.mean_total_rewards[-20:])
         label = f'mean_total_rewards: \n current={self.mean_total_rewards[-1]:.2f} \n mean={mean_total_rewards:.2f}'
+        plt.plot(-0.2 * np.ones(len(self.mean_total_rewards)), 'r', label='best total reward')
         plt.plot(self.mean_total_rewards, 'g', label=label)
         plt.legend()
         plt.grid()
