@@ -22,14 +22,14 @@ class VanDerPolVisualizer:
         plt.figure(figsize=[12, 12])
 
         plt.subplot(221)
-        plt.plot([state[1] for state in states], [state[2] for state in states], 'm--', label='Траектория движения')
-        plt.plot(states[-1][1],states[-1][2],'bo', label='Финальное состояние')
+        plt.plot([state[1] for state in states], [state[2] for state in states], 'm--', label='trajectory')
+        plt.plot(states[-1][1],states[-1][2],'bo', label='terminal state')
         plt.xlim((-5, 5))
         plt.ylim((-5, 5))
         plt.grid()
         
         plt.subplot(222)
-        plt.plot(np.arange(len(actions)) * env.dt, [action for action in actions], 'g', label='Реализация U')
+        plt.plot(np.arange(len(actions)) * env.dt, [action for action in actions], 'g', label='actions')
         plt.xlim((0, env.terminal_time))
         plt.legend()
         plt.grid()
@@ -42,7 +42,7 @@ class VanDerPolVisualizer:
         plt.grid()
 
         plt.subplot(224)
-        plt.plot(self.noise_thresholds, 'g', label='Порог шума u-агента')
+        plt.plot(self.noise_thresholds, 'g', label='noise threshold')
         plt.legend()
         plt.grid()
 
