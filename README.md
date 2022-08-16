@@ -26,7 +26,7 @@ $$
 \dot{x}(t) = u(t),\quad t \in [0,2],\quad x(t) \in \mathbb R,\quad u(t) \in [-2,2],\quad x(0) = 1.
 $$
 
-The control tends to bring the system to $0$ at the terminal_time $T=2$:
+The control tends to bring the system to $0$ at the terminal time:
 
 $$
 \gamma = - \|x(2)\|^2 - 0.5 \int_0^{11} u^2(t) d t
@@ -34,7 +34,21 @@ $$
 
 ### Pendulum (3,1)
 
-Pendulum is a traditional problem for testing control algorithms. The dynamic model is taken from [OpenAI Gym](https://www.gymlibrary.ml/environments/classic_control/pendulum/). The aim of the control is the stabilization of the pendulum in the top position at the terminal time;
+Pendulum is a traditional problem for testing control algorithms. The dynamic model is taken from [OpenAI Gym](https://www.gymlibrary.ml/environments/classic_control/pendulum/):
+
+$$
+\dot{x}_1(t) = x_2(t),\quad \dot{x}_2(t) = \frac{3 g}{2 l} \sin(x_1(t)) + \frac{3}{m l^2} u(t),\quad t \in [0,5],\quad x(t) \in \mathbb R^2,\quad u(t) \in [-2,2],
+$$
+
+$$
+x_1(0) = \pi,\quad x_2(0) = 0,\quad g=9.8,\quad m=l=1.
+$$
+
+The aim of the control is the stabilization of the pendulum in the top position at the terminal time:
+
+$$
+\gamma = - |x_1(5)\| - 0.1 |x_1(5)\| - 0.05 \int_0^{5} u^2(t) d t
+$$
 
 ### VanDerPol (3,1)
 
@@ -47,7 +61,7 @@ $$
 x(0) = 1,\quad \dot{x}(0) = 0.
 $$
 
-The aim of the control is to stabilize the oscillator at the terminal time $T=11$:
+The aim of the control is to stabilize the oscillator at the terminal time:
 
 $$
 \gamma = - \|x(11)\|^2 - 0.05 \int_0^{11} u^2(t) d t
