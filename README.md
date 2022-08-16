@@ -67,7 +67,23 @@ $$
 \gamma = - \|x(11)\|^2 - 0.05 \int_0^{11} u^2(t) d t
 $$
 
-- **DubinsCar (4,1)**  is a quite famous model which describes a motion of the point particle moving at a constant speed on the plane. The problem is to find a control providing the closeness of the motion with a target point at the terminal time;
+### DubinsCar (4,1)
+
+DubinsCar  is a quite famous model which describes a motion of the point particle moving at a constant speed on the plane:
+
+$$
+\dot{x}(t) = \cos(\varphi(t)),\quad \dot{y}(t) = \sin(\varphi(t)),\quad \dot{\varphi}(t) = u(t),\quad t \in [0, 2 \pi],\quad (x(t),y(t),\varphi(t)) \in \mathbb R^3,\quad u(t) \in [-0.5, 1],
+$$
+
+$$
+x(0) = 0,\quad y(0) = 0,\quad \varphi(0) = 0.
+$$
+
+The problem is to find a control providing the closeness of the motion with a target point at the terminal time:
+
+$$
+\gamma = - |x(2 \pi) - 4| - |y(2 \pi)| - |\varphi(2 \pi) - 0.75 \pi| - 0.01 \int_0^{2 \pi} u^2.
+$$
 
 - **TargetProblem (7,2)** is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
 describes a hand holding a spring to which is attached a mass. It is required to control the hand such that the mass achieve the target point at the terminal time
