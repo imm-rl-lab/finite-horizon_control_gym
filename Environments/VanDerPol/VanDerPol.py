@@ -3,8 +3,8 @@ import torch
 
 
 class VanDerPol:
-    def __init__(self, initial_state=np.array([0,1,0]), action_min=np.array([-1]), action_max=np.array([+1]), 
-                 terminal_time=11, dt=0.1, inner_step_n=10):
+    def __init__(self, initial_state=np.array([0,1,0]), action_min=np.array([-1]), action_max=np.array([1]), 
+                 terminal_time=11, dt=0.1, inner_step_n=10, penalty_coef=0.05):
         self.state_dim = 3
         self.action_dim = 1
         self.action_min = action_min
@@ -14,8 +14,7 @@ class VanDerPol:
         self.inner_step_n = inner_step_n
         self.inner_dt = self.dt / self.inner_step_n
         self.initial_state = initial_state
-        self.state = self.initial_state
-        self.r = 0.05
+        self.penalty_coef = penalty_coef
         return None
     
     def reset(self):
@@ -23,36 +22,21 @@ class VanDerPol:
         return self.state
     
     def step(self, action):
+        self.state, reward, done, info = self.virtual_step(self.state, action)
+        return self.state, reward, done, info
+    
+    def virtual_step(self, state, action):
         action = np.clip(action, self.action_min, self.action_max)
         
         for _ in range(self.inner_step_n):
-            f = np.array([1, self.state[2], (1 - self.state[1] ** 2) * self.state[2] - self.state[1] + action[0]])
-            self.state = self.state + f * self.inner_dt
-            
-        if self.state[0] < self.terminal_time:
-            done = False
-            reward = - self.r * action[0] ** 2 * self.dt
-        else:
+            dynamics = np.array([1, state[2], (1 - state[1] ** 2) * state[2] - state[1] + action[0]])
+            state = state + dynamics * self.inner_dt
+        
+        done = False
+        reward = - self.penalty_coef * action[0] ** 2 * self.dt
+        if state[0] >= self.terminal_time - self.dt / 2:
             done = True
-            reward = - self.state[1] ** 2 - self.state[2] ** 2
+            reward = - state[1] ** 2 - state[2] ** 2
         
-        return self.state, reward, done, _
+        return state, reward, done, _
 
-    def virtual_step_for_batch(self, states, actions):
-        actions = np.clip(actions, self.action_min, self.action_max)
-        
-        for _ in range(self.inner_step_n):
-            dynamic = np.column_stack([np.ones(states.shape[0]), states[:, 2], 
-                                       (1 - states[:, 1] ** 2) * states[:, 2] - states[:, 1] + actions[:, 0]])
-            states = states + dynamic * self.inner_dt
-
-        dones = np.full(states.shape[0], False)
-        dones[states[:, 0] >= self.terminal_time - self.dt / 2] = True
-            
-        rewards = - self.r * actions[:, 0] ** 2 * self.dt
-        rewards[dones] = -states[dones, 1] ** 2 - states[dones, 2] ** 2
-        
-        return states, rewards, dones, _
-    
-    def g(self, state):
-        return np.array([[0, 1]])
