@@ -29,7 +29,7 @@ class VanDerPolVisualizer:
         plt.grid()
         
         plt.subplot(222)
-        plt.plot(np.arange(len(actions)) * env.dt, [action for action in actions], 'g', label='actions')
+        plt.step(np.arange(len(actions)) * env.dt, [action for action in actions], 'g', label='actions')
         plt.xlim((0, env.terminal_time))
         plt.legend()
         plt.grid()
