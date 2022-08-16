@@ -1,6 +1,5 @@
 import numpy as np
 import torch
-from numpy.linalg import norm
 
 
 class TargetProblem:
@@ -43,11 +42,10 @@ class TargetProblem:
             k4 = self.dynamics(state + k3 * self.inner_dt, action)
             state = state + (k1 + 2 * k2 + 2 * k3 + k4) * self.inner_dt / 6
 
-        reward = - self.penalty_coef * (norm(action) ** 2) * self.dt
+        reward = - self.penalty_coef * (np.linalg.norm(action) ** 2) * self.dt
         done = False
         if state[0] >= self.terminal_time - self.dt / 2:
-            reward = - ((state[1] ** 2) + (state[2] ** 2) 
-                        + ((state[3] - self.target_point[0]) ** 2) + ((state[4] - self.target_point[1]) ** 2))
+            reward -= state[1] ** 2 + state[2] ** 2 + (state[3] - self.target_point[0]) ** 2 + (state[4] - self.target_point[1]) ** 2
             done = True
 
         return state, reward, done, {}
