@@ -44,7 +44,7 @@ class SimpleControlProblemVisualizer:
 
         if 'noise' in dir(agent):
             plt.subplot(224)
-            plt.plot(self.noise_thresholds, 'g', label='Порог шума u-агента')
+            plt.plot(self.noise_thresholds, 'g', label='noise threshold')
             plt.legend()
             plt.grid()
 
