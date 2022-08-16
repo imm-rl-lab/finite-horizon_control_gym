@@ -22,7 +22,17 @@ The following examples of finite-horizon optimal control problems are implemente
 
 - **Pendulum (3,1)** is a traditional problem for testing control algorithms. The dynamic model is taken from [OpenAI Gym](https://www.gymlibrary.ml/environments/classic_control/pendulum/). The aim of the control is the stabilization of the pendulum in the top position at the terminal time;
 
-- **VanDerPol (3,1)** oscillator is a famous model of a non-conservative oscillator with non-linear damping (see, e.g. [wikipedia](https://en.wikipedia.org/wiki/Van_der_Pol_oscillator)). The aim of the control is to stabilize the oscillator at the terminal time;
+### VanDerPol (3,1)
+
+VanDerPol oscillator is a famous model of a non-conservative oscillator with non-linear damping (see, e.g. [wikipedia](https://en.wikipedia.org/wiki/Van_der_Pol_oscillator)):
+
+$\ddot{x}(t) - (1 - x^2(t)) \dot{x}(t) + x(t) = u(t),\quad t \in [0,11],\quad x(t), u(t) \in \mathbb R$
+
+$x(0) = 1,\quad \dot{x}(0) = 0$
+
+The aim of the control is to stabilize the oscillator at the terminal time $T=11$:
+
+$\gamma = \|x(11)\|^2 + 0.05 \int_0^{11} u^2(t) d t$
 
 - **DubinsCar (4,1)**  is a quite famous model which describes a motion of the point particle moving at a constant speed on the plane. The problem is to find a control providing the closeness of the motion with a target point at the terminal time;
 
