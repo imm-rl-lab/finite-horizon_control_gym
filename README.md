@@ -34,7 +34,16 @@ $$
 
 ### Pendulum (3,1)
 
-Pendulum is a traditional problem for testing control algorithms. The dynamic model is taken from [OpenAI Gym](https://www.gymlibrary.ml/environments/classic_control/pendulum/). The aim of the control is the stabilization of the pendulum in the top position at the terminal time;
+Pendulum is a traditional problem for testing control algorithms. The dynamic model is taken from [OpenAI Gym](https://www.gymlibrary.ml/environments/classic_control/pendulum/):
+
+$$
+\dot{x}_1(t) = x_2(t),\quad \dot{x}_2(t) = \frac{3 g}{2 l} \sin(x_1(t)) + \frac{3}{m l^2} u(t),\quad t \in [0,5],\quad x(t) \in \mathbb R^2,\quad u(t) \in [-2,2],
+$$
+
+
+
+
+. The aim of the control is the stabilization of the pendulum in the top position at the terminal time;
 
 ### VanDerPol (3,1)
 
