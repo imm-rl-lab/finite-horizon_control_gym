@@ -5,6 +5,7 @@ The repository contains examples of finite-horizon optimal control problems impl
 - <code>state_dim</code> - the state space dimension; 
 - <code>action_dim</code> - the action space dimension;
 - <code>terminal_time</code> - the action space dimension;
-- <code>reset()</code> - to get an initial <code>state</code> (deterministic)
-- <code>step(action)</code> - to get <code>next_state</code>, current <code>reward</code>, <code>done</code> (<code>True</code> if <code>t > terminal_time</code>, otherwise <code>False</code>), <code>info</code>
+- <code>dt</code> - the time-discretization diameter;
+- <code>reset()</code> - to get an initial <code>state</code> (deterministic);
+- <code>step(action)</code> - to get <code>next_state</code>, current <code>reward</code>, <code>done</code> (<code>True</code> if <code>t > terminal_time</code>, otherwise <code>False</code>), <code>info</code>;
 - <code>virtual_step(state, action)</code> - to get the same as from <code>step(action)</code>, but but the current <code>state</code> is also set.
