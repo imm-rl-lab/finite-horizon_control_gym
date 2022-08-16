@@ -33,9 +33,8 @@ class SimpleControlProblem:
 
         reward = - self.penalty_coef * action[0] ** 2 * self.dt
         done = False
-        
-        if self.state[0] >= self.terminal_time - self.dt / 2:
-            reward -= self.state[1] ** 2
+        if state[0] >= self.terminal_time - self.dt / 2:
+            reward -= state[1] ** 2
             done = True
         
         return state, reward, done, {}
