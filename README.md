@@ -87,7 +87,7 @@ $$
 
 ### TargetProblem (7,2)
 
-TargetProblem (7,2) is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
+TargetProblem  is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
 describes a hand holding a spring to which is attached a mass:
 
 $$
@@ -103,4 +103,14 @@ It is required to control the hand such that the mass achieve the target point a
 $$
 \gamma = - \|x(10) - x_T\|^2 - \|y(10)\|^2 - 0.001 \int_0^{10} u^2,\quad x_T = (2,2).
 $$
+
+### EarthOrbitalMotion (5,2)
+
+The dynamic in the problem describes a motion of satellite around the Earth:
+
+$$
+\ddot{x}(t) = x(t) \dot{y}(t) - \frac{G M}{x^2(t)} + \frac{1}{1000 m} u_1(t),\quad
+\ddot{y}(t) = - 2 \frac{\dot{x}(t) \dot{y}(t)}{x(t)} + \frac{1}{1000 m} u_2(t)
+$$
+
 
