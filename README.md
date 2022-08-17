@@ -87,7 +87,7 @@ $$
 
 ### TargetProblem (7,2)
 
-TargetProblem (7,2) is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
+TargetProblem  is an optimal control problem presented in [Munos (2006)](https://www.jmlr.org/papers/volume7/munos06b/munos06b.pdf). The dynamical system
 describes a hand holding a spring to which is attached a mass:
 
 $$
@@ -102,5 +102,28 @@ It is required to control the hand such that the mass achieve the target point a
 
 $$
 \gamma = - \|x(10) - x_T\|^2 - \|y(10)\|^2 - 0.001 \int_0^{10} u^2,\quad x_T = (2,2).
+$$
+
+### EarthOrbitalMotion (5,2)
+
+The dynamic in the problem describes a motion of satellite around the Earth:
+
+$$
+\ddot{x}(t) = x(t) \dot{y}(t) - \frac{G M}{x^2(t)} + \frac{1}{1000 m} u_1(t),\quad
+\ddot{y}(t) = - 2 \frac{\dot{x}(t) \dot{y}(t)}{x(t)} + \frac{1}{1000 m} u_2(t), 
+$$
+
+$$
+t \in [0,9000],\quad x(t),y(t) \in \mathbb R,\quad u_1(t),u_2(t) \in [-0.5,0.5],
+$$
+
+$$
+x(0) = 6900,\quad \dot{x}(0) = 0,\quad y(0) = 0,\quad \dot{y}(0) = \frac{G M}{x^3(0)},
+$$
+
+where $G = 6.67 \times 10^{-20}$ is the gravitational constant; $M = 5.97 \times 10^{24}$ is the mass of the Earth; $m=50$ is the satellite mass. The aim of the control is to transfer the satellite into a new orbit $7100$ and provide the speed for stable retention in this orbit:
+
+$$
+\gamma = - \sqrt{\|x(9000) - x_T\|^2 - \|\dot{y}(9000) - \dot{y}_T\|^2} - 0.001 \int_0^{9000} u^2,\quad x_T = 7100,\quad \dot{y}_T = \frac{G M}{x_T^3}.
 $$
 
