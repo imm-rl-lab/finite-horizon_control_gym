@@ -19,8 +19,7 @@ class EarthOrbitalMotion():
         #inner params
         self.M = 5.9726e24 # mass of the Earth, kg
         self.m = 50 # satellite mass, kg
-        self.R = 6371 # Earth radius, km
-        self.G_const = 6.67448478e-20 # gravitational constant, km^3/(kg*sec^2)
+        self.G = 6.67448478e-20 # gravitational constant, km^3/(kg*sec^2)
         #set initial state and required_orbit 
         self.initial_state = initial_state
         self.initial_state[4] = self.get_rotation_speed(initial_state[1]) # refinement of the orbital speed of rotation around the Earth
@@ -28,7 +27,7 @@ class EarthOrbitalMotion():
         return None
         
     def dynamics(self, state, action):
-        return np.array([1, state[2], state[1]*state[4]**2 - self.G_const*self.M/(state[1]**2) + action[0]/(1000*self.m), 
+        return np.array([1, state[2], state[1]*state[4]**2 - self.G*self.M/(state[1]**2) + action[0]/(1000*self.m), 
                          state[4], -2*state[4]*state[2]/state[1] + action[1]/(state[1]*self.m*1000)])
 
     def reset(self):
@@ -54,4 +53,4 @@ class EarthOrbitalMotion():
         return self.state, reward, done, None
     
     def get_rotation_speed(self, orbit):
-        return np.sqrt(self.G_const * self.M / (orbit ** 3))
+        return np.sqrt(self.G * self.M / (orbit ** 3))
