@@ -110,7 +110,15 @@ The dynamic in the problem describes a motion of satellite around the Earth:
 
 $$
 \ddot{x}(t) = x(t) \dot{y}(t) - \frac{G M}{x^2(t)} + \frac{1}{1000 m} u_1(t),\quad
-\ddot{y}(t) = - 2 \frac{\dot{x}(t) \dot{y}(t)}{x(t)} + \frac{1}{1000 m} u_2(t)
+\ddot{y}(t) = - 2 \frac{\dot{x}(t) \dot{y}(t)}{x(t)} + \frac{1}{1000 m} u_2(t), 
 $$
 
+$$
+t \in [0,9000],\quad x(t),y(t) \in \mathbb R,\quad u_1(t),u_2(t) \in [-0.5,0.5],
+$$
 
+$$
+x(0) = 6900,\quad \dot{x}(0) = 0,\quad y(0) = 0,\quad \dot{y}(0) = \frac{G M}{x(0)},
+$$
+
+where $G = 6.67 \times 10^{-20}$ is the gravitational constant; $M = 5.97 \times 10^{24}$ is the mass of the Earth; $m=50$ is the satellite mass.
