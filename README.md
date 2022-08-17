@@ -91,7 +91,7 @@ TargetProblem (7,2) is an optimal control problem presented in [Munos (2006)](ht
 describes a hand holding a spring to which is attached a mass:
 
 $$
-\dot{x}(t) = y(t) - x(t),\quad \ddot{y}(t) = u(t),\quad t \in [0,10],\quad x(t), y(t) \in \mathbb R^2,\quad u_1(t), u_2(t) \in [-1,1],
+\ddot{x}(t) = y(t) - x(t),\quad \dot{y}(t) = u(t),\quad t \in [0,10],\quad x(t), y(t) \in \mathbb R^2,\quad u_1(t), u_2(t) \in [-1,1],
 $$
 
 $$
