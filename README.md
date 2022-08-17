@@ -118,7 +118,12 @@ t \in [0,9000],\quad x(t),y(t) \in \mathbb R,\quad u_1(t),u_2(t) \in [-0.5,0.5],
 $$
 
 $$
-x(0) = 6900,\quad \dot{x}(0) = 0,\quad y(0) = 0,\quad \dot{y}(0) = \frac{G M}{x(0)},
+x(0) = 6900,\quad \dot{x}(0) = 0,\quad y(0) = 0,\quad \dot{y}(0) = \frac{G M}{x^3(0)},
 $$
 
-where $G = 6.67 \times 10^{-20}$ is the gravitational constant; $M = 5.97 \times 10^{24}$ is the mass of the Earth; $m=50$ is the satellite mass.
+where $G = 6.67 \times 10^{-20}$ is the gravitational constant; $M = 5.97 \times 10^{24}$ is the mass of the Earth; $m=50$ is the satellite mass. The aim of the control is to transfer the satellite into a new orbit $7100$ and provide the speed for stable retention in this orbit:
+
+$$
+\gamma = - \sqrt{\|x(9000) - x_T\|^2 - \|\dot{y}(9000) - \dot{y}_T\|^2} - 0.001 \int_0^{9000} u^2,\quad x_T = 7100,\quad \dot{y}_T = \frac{G M}{x_T^3}.
+$$
+
